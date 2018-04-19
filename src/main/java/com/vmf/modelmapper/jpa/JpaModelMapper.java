@@ -21,6 +21,7 @@ import org.modelmapper.internal.util.Assert;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -118,7 +119,12 @@ public class JpaModelMapper {
     public <S, D> List<D> mapEntities(List<S> entities, Class<D> destinationType) {
         Assert.notNull(entities, "source");
         Assert.notNull(destinationType, "destinationType");
-        ModelMapper mapper = buildMapper(entities.getClass(), destinationType.getClass());
+
+        if (entities.size() == 0)
+            return new ArrayList<>();
+
+        Class<?> sourceType = entities.get(0).getClass();
+        ModelMapper mapper = buildMapper(sourceType, destinationType);
         return entities
                 .stream()
                 .map(entity -> mapper.map(entity, destinationType))
