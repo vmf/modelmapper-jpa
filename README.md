@@ -2,7 +2,7 @@
 
 JPA Model Mapper aims to solve common JPA mapping issues and also issues when mapping entities to DTOs using [Model Mapper](http://modelmapper.org/).
 
-## The LazyInitializationException issue:
+## The [LazyInitializationException](http://docs.jboss.org/hibernate/orm/5.3/javadocs/org/hibernate/LazyInitializationException.html) issue:
 Its crucial for performance to declare entities as lazy load so we don't need to fetch all related entities every time we need some data. But this technique leads to some issues. 
 The most common one is the LazyInitializationException that can be pretty annoying sometimes. Most of the time we would just want a null object for a not loaded entity instead of an object that throws an exception if accessed. The examples below show how to solve the LazyInitializationException issue using JPA Model Mapper.  
 
