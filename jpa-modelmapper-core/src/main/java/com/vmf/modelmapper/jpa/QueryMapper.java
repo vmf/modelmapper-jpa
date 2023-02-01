@@ -15,9 +15,10 @@
  */
 package com.vmf.modelmapper.jpa;
 
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
 import java.util.List;
+
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.TypedQuery;
 
 /**
  * Represents a query to be mapped.
